@@ -2,16 +2,16 @@
 // Dependencies
 // =============================================================
 var express = require("express");
+var bodyParser = require("body-parser");
 var path = require("path");
 
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
@@ -22,44 +22,31 @@ var http = require("http");
 var fs = require("fs");
 var PORT = 5000;
 
-var server = http.createServer(handleRequest);
+ //http://localhost:5000/
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "home.html"));
+  });
 
-// Start our server
-server.listen(PORT, function() {
-  // Callback triggered when server is successfully listening. Hurray!
-  console.log("Server listening on: http://localhost:" + PORT);
-});
+   //http://localhost:5000/reserve
+  app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+  });
 
-// Create a function which handles incoming requests and sends responses
-function handleRequest(req, res) {
+//http://localhost:5000/tables
+  app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+  });
+  
+  //http://localhost:5000/api/tables
+  app.get("/api/tables", function(req, res) {
+    return res.json(characters);
+  });
 
-  // Capture the url the request is made to
-  var path = req.url;
-  // Depending on the URL, display a different HTML file.
-  switch (path) {
-
-    //http://localhost:5000/
-  case "/":
-    return   fs.readFile(__dirname + "/home.html", function(err, data) {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
+    //http://localhost:5000/api/reserve
+    app.get("/api/waitlist", function(req, res) {
+        return res.json(characters);
       });
 
-      //http://localhost:5000/reserve
-  case "/reserve":
-    return fs.readFile(__dirname + "/reserve.html", function(err, data) {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
+      app.listen(PORT, function() {
+        console.log("App listening on PORT " + PORT);
       });
-
-      //http://localhost:5000/tables
-      case "/tables":
-      return fs.readFile(__dirname + "/tables.html", function(err, data) {
-          res.writeHead(200, { "Content-Type": "text/html" });
-          res.end(data);
-        });
-      
-  default:
-    return display404(path, req, res);
-  }
-}
