@@ -1,4 +1,3 @@
-
 // Dependencies
 // =============================================================
 var express = require("express");
@@ -17,6 +16,9 @@ app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
 
+
+var http = require("http");
+var fs = require("fs");
 var PORT = 5000;
 
 //http://localhost:5000/
@@ -44,6 +46,12 @@ app.get("/api/waitlist", function (req, res) {
     return res.json(characters);
 });
 
+<<<<<<< HEAD
 
 //store the tables and waitlist array
 var reservation_list = [];
+=======
+      app.listen(PORT, function() {
+        console.log("App listening on PORT " + PORT);
+      });
+>>>>>>> b1b7bca855f9bf42d494c0c146e277287a91e0e2
