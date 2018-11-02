@@ -3,13 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-<<<<<<< HEAD
-=======
-  "dependencies": {
-    "express": "^4.16.4"
-  },
-  "devDependencies": {},
->>>>>>> 8c9ecaba117d64eb57ddc91f35895cb5c214b9ae
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,12 +15,8 @@
   "bugs": {
     "url": "https://github.com/brysonelson/hot-restaurant/issues"
   },
-<<<<<<< HEAD
   "homepage": "https://github.com/brysonelson/hot-restaurant#readme",
   "dependencies": {
     "express": "^4.16.4"
   }
-=======
-  "homepage": "https://github.com/brysonelson/hot-restaurant#readme"
->>>>>>> 8c9ecaba117d64eb57ddc91f35895cb5c214b9ae
 }
