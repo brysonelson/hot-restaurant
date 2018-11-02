@@ -39,7 +39,7 @@ function handleRequest(req, res) {
           res.end(data);
         });
       
-  default:
-    return display404(path, req, res);
+//   default:
+//     return display404(path, req, res);
   }
 }
