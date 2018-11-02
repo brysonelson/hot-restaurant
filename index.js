@@ -13,54 +13,37 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
 
 var PORT = 5000;
 
- //http://localhost:5000/
-app.get("/", function(req, res) {
+//http://localhost:5000/
+app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
-  });
+});
 
-   //http://localhost:5000/reserve
-  app.get("/reserve", function(req, res) {
+//http://localhost:5000/reserve
+app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
-  });
+});
 
 //http://localhost:5000/tables
-  app.get("/tables", function(req, res) {
+app.get("/tables", function (req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
-  });
-  
-  //http://localhost:5000/api/tables
-  app.get("/api/tables", function(req, res) {
-    return res.json(characters);
-  });
+});
 
-    //http://localhost:5000/api/reserve
-    app.get("/api/waitlist", function(req, res) {
-        return res.json(characters);
-      });
+//http://localhost:5000/api/tables
+app.get("/api/tables", function (req, res) {
+    return res.json(characters);
+});
+
+//http://localhost:5000/api/reserve
+app.get("/api/waitlist", function (req, res) {
+    return res.json(characters);
+});
 
 
 //store the tables and waitlist array
 var reservation_list = [];
-
-
-$("#create-reservation").on("click", function(){
-
-    // Here we grab the form elements
-    var newReservation = {
-        customerName: $('#reserve_name').val().trim(),
-        phoneNumber: $('#reserve_phone').val().trim(),
-        customerEmail: $('#reserve_email').val().trim(),
-        customerID: $('#reserve_uniqueID').val().trim()
-    };
-
-    console.log(newReservation);
-
-    reservation_list.push(newReservation);
-
-});
