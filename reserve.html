@@ -82,6 +82,7 @@
 	//store the tables and waitlist array
 	var reservation_list = [];
 	var waitlist = [];
+
 	
 	$("#create-reservation").on("click", function(){
 
@@ -98,12 +99,19 @@
 		console.log(newReservation);
 	
 		if (reservation_list.length < 5) {
-			
+			alert("You've been booked");
 			reservation_list.push(newReservation);
 			console.log(reservation_list);
 		} else {
+			alert("You're on the waitlist");
 			waitlist.push(newReservation);
 		}
+
+		// Clear the form when submitting
+		$('#reserve_name').val("");
+		$('#reserve_phone').val("");
+		$('#reserve_email').val("");
+		$('#reserve_uniqueID').val("");
 		
 	
 	});</script>
