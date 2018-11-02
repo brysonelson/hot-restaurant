@@ -17,9 +17,6 @@ app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
 
-
-var http = require("http");
-var fs = require("fs");
 var PORT = 5000;
 
  //http://localhost:5000/
@@ -47,6 +44,23 @@ app.get("/", function(req, res) {
         return res.json(characters);
       });
 
-      app.listen(PORT, function() {
-        console.log("App listening on PORT " + PORT);
-      });
+
+//store the tables and waitlist array
+var reservation_list = [];
+
+
+$("#create-reservation").on("click", function(){
+
+    // Here we grab the form elements
+    var newReservation = {
+        customerName: $('#reserve_name').val().trim(),
+        phoneNumber: $('#reserve_phone').val().trim(),
+        customerEmail: $('#reserve_email').val().trim(),
+        customerID: $('#reserve_uniqueID').val().trim()
+    };
+
+    console.log(newReservation);
+
+    reservation_list.push(newReservation);
+
+});
